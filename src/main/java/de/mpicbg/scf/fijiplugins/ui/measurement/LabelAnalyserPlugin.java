@@ -140,7 +140,7 @@ public class LabelAnalyserPlugin implements PlugInFilter {
 		/* Measurements.SURFACE_AREA */
 		Feature.EIGENVALUES, Feature.ASPECT_RATIO, Feature.SPHERICITY, Feature.NUMBER_OF_TOUCHING_NEIGHBORS };
 		for (int i = 0; i < possibleMeasurements.length; i++) {
-			gdp.addCheckbox(possibleMeasurements[i].name(), whatToMeasure.contains(Feature.AREA_VOLUME));
+			gdp.addCheckbox(possibleMeasurements[i].name().replace(" ", "_"), whatToMeasure.contains(Feature.AREA_VOLUME));
 		}
 
 		/*
@@ -157,10 +157,10 @@ public class LabelAnalyserPlugin implements PlugInFilter {
 		 * whatToMeasure.contains(Measurements.ASPECT_RATIO)); gdp.addCheckbox("Sphericity", whatToMeasure.contains(Measurements.SPHERICITY));
 		 * gdp.addCheckbox("Number of touching neighbors", whatToMeasure.contains(Measurements.NUMBER_OF_TOUCHING_NEIGHBORS));
 		 */
-		gdp.addCheckbox("Average distance of o closest neighbors", whatToMeasure.contains(Feature.AVERAGE_DISTANCE_OF_N_CLOSEST_NEIGHBORS));
-		gdp.addNumericField("n = ", numberNOfClosestNeighbors, 0);
-		gdp.addCheckbox("Number of neighbors closer than distance d", whatToMeasure.contains(Feature.NUMBER_OF_NEIGHBORS_CLOSER_THAN));
-		gdp.addNumericField("d = ", closeNeighborDistanceD, 2);
+		gdp.addCheckbox("Average_distance_of_n_closest_neighbors", whatToMeasure.contains(Feature.AVERAGE_DISTANCE_OF_N_CLOSEST_NEIGHBORS));
+		gdp.addNumericField("n_", numberNOfClosestNeighbors, 0);
+		gdp.addCheckbox("Number_of_neighbors_closer_than_distance_d", whatToMeasure.contains(Feature.NUMBER_OF_NEIGHBORS_CLOSER_THAN));
+		gdp.addNumericField("d_", closeNeighborDistanceD, 2);
 
 		gdp.addMessage("Show result as");
 		gdp.addCheckbox("table ", showResultsAsTable);
