@@ -3,8 +3,6 @@ package de.mpicbg.scf.labelhandling.fijiplugins;
 import de.mpicbg.scf.labelhandling.data.Feature;
 import ij.measure.ResultsTable;
 import java.util.ArrayList;
-import net.imagej.table.DefaultGenericTable;
-import net.imagej.table.DoubleColumn;
 import net.imglib2.Cursor;
 import net.imglib2.IterableInterval;
 import net.imglib2.RandomAccessibleInterval;

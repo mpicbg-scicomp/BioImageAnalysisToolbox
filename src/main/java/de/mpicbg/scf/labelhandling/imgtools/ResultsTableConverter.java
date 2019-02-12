@@ -2,18 +2,17 @@ package de.mpicbg.scf.labelhandling.imgtools;
 
 import de.mpicbg.scf.imgtools.ui.DebugHelper;
 import ij.measure.ResultsTable;
+import org.scijava.table.DefaultGenericTable;
+import org.scijava.table.DoubleColumn;
+import org.scijava.table.Table;
 
-import javax.xml.transform.Result;
-import net.imagej.table.DefaultGenericTable;
-import net.imagej.table.DoubleColumn;
-import net.imagej.table.GenericTable;
 
 /**
  * Author: Robert Haase, Scientific Computing Facility, MPI-CBG Dresden, rhaase@mpi-cbg.de
  * Date: July 2016
  */
 public class ResultsTableConverter {
-    public static ResultsTable convertIJ2toIJ1(net.imagej.table.ResultsTable tableIn)
+    public static ResultsTable convertIJ2toIJ1(Table tableIn)
     {
         ResultsTable tableOut = new ResultsTable();
 
@@ -23,7 +22,7 @@ public class ResultsTableConverter {
             for (int c = 0; c < tableIn.getColumnCount(); c++)
             {
                 //DebugHelper.print(ResultsTableConverter.class, "Column " + tableIn.getColumnHeader(c));
-                tableOut.addValue(tableIn.getColumnHeader(c), tableIn.getValue(c, r));
+                tableOut.addValue(tableIn.getColumnHeader(c), (Double) tableIn.get(c, r));
             }
         }
 

@@ -4,8 +4,10 @@ package de.mpicbg.scf.labelhandling.data;
 import net.imagej.ImgPlus;
 import net.imagej.axis.Axes;
 import net.imagej.axis.AxisType;
-import net.imagej.table.*;
+import net.imagej.table.ResultsImg;
 import net.imglib2.type.numeric.real.DoubleType;
+import org.scijava.table.AbstractTable;
+import org.scijava.table.DoubleColumn;
 
 import java.util.Hashtable;
 
@@ -13,7 +15,7 @@ import java.util.Hashtable;
  * Author: Robert Haase, Scientific Computing Facility, MPI-CBG Dresden, rhaase@mpi-cbg.de
  * Date: July 2016
  */
-public class FeatureMeasurementTable extends AbstractTable<DoubleColumn, Double> implements ResultsTable {
+public class FeatureMeasurementTable extends AbstractTable<DoubleColumn, Double> {
     Hashtable<Feature, Measurement> table;
 
     public FeatureMeasurementTable(Hashtable<Feature, Measurement> table)
@@ -57,8 +59,8 @@ public class FeatureMeasurementTable extends AbstractTable<DoubleColumn, Double>
         }
     }
 
-    public double getValue(int col, int row) {
-        return ((DoubleColumn)this.get(col)).getValue(row);
+    public float getValue(int col, int row) {
+        return (float)((DoubleColumn)this.get(col)).getValue(row);
     }
 
     public void setValue(int col, int row, double value) {
@@ -66,11 +68,12 @@ public class FeatureMeasurementTable extends AbstractTable<DoubleColumn, Double>
     }
 
     public ImgPlus<DoubleType> img() {
-        ResultsImg img = new ResultsImg(this);
+        /*ResultsImg img = new ResultsImg(this);
         AxisType[] axes = new AxisType[]{Axes.X, Axes.Y};
         String name = "Results";
         ImgPlus imgPlus = new ImgPlus(img, "Results", axes);
-        return imgPlus;
+        return imgPlus;*/
+        return null;
     }
 
     protected DoubleColumn createColumn(String header) {
