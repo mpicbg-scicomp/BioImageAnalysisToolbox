@@ -138,8 +138,11 @@ public class BrushPluginTool extends InteractivePluginTool {
 				return;
 			}
 			drawCircleAroundMouse(radius);
-			imp.getWindow().getCanvas().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(lastDrawnCursorImage, new Point(radius,  radius), "circle"));
-			
+			try {
+				imp.getWindow().getCanvas().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(lastDrawnCursorImage, new Point(radius, radius), "circle"));
+			} catch (Exception e) {
+				DebugHelper.print(de.mpicbg.scf.rhaase.volumemanager.plugins.tools.BrushPluginTool.class, e.getMessage());
+			}
 		}
 
 		/**
