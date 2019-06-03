@@ -29,7 +29,7 @@ import java.util.Hashtable;
  */
 public class AcademicExampleTest {
 
-
+/*
     @Test
     public void academicIJ2ExampleGeometryAnalysis() {
 
@@ -128,6 +128,6 @@ public class AcademicExampleTest {
             rt.show("Results");
         }
     }
-
+*/
 
 }
