@@ -6,7 +6,6 @@ import de.mpicbg.scf.labelhandling.data.Utilities;
 import java.util.*;
 
 import de.mpicbg.scf.imgtools.ui.DebugHelper;
-import javafx.geometry.BoundingBox;
 import net.imagej.mesh.Mesh;
 import net.imagej.ops.image.cooccurrenceMatrix.MatrixOrientation2D;
 import net.imagej.ops.image.cooccurrenceMatrix.MatrixOrientation3D;
