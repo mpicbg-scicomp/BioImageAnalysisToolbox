@@ -78,7 +78,7 @@
 		<package-name>de.mpibcbg.scf</package-name>
 		<license.licenseName>bsd_3</license.licenseName>
 		<license.copyrightOwners>Max Planck Institute of Molecular Cell Biology and Genetics, Dresden</license.copyrightOwners>
-		<scijava.app.directory>C:/programs/fiji-win64/Fiji.app</scijava.app.directory>
+		<scijava.app.directory>/Users/walker/software/Fiji_dev.app</scijava.app.directory>
 	</properties>
 
 
