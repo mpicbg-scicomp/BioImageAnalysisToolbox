@@ -128,6 +128,76 @@ public class LabelMapToRoiManagerPlugin implements PlugInFilter {
 				break;
 			}
 		}
+
+		public static void apply(ImagePlus labelMap, RoiManager mrm)
+	{
+		// Go through all thresholds 1-1,2-2,... segment objects in the labelmap and add them to the ROI manager
+		
+		if (mrm == null)
+		{
+			mrm = new RoiManager();
+		}
+		
+		
+		ImageStatistics stats = labelMap.getStatistics();
+		int count = (int) stats.max;
+		int imagePixelCount = labelMap.getWidth() * labelMap.getHeight();
+		
+		Roi r1 = null;
+		Roi r2 = null;
+			
+		ImagePlus tempImp = new ImagePlus("test ", labelMap.getProcessor());
+		for (int t = 1; t <= count; t++)
+		{
+			if (ProgressDialog.wasCancelled())
+			{
+				break;
+			}
+			
+			r1 = r2;
+			if (r1 == null)
+			{
+				tempImp.killRoi();
+				r1 = Thresholding.applyThreshold(tempImp, t, count+1);
+			}
+			tempImp.killRoi();
+			r2 = Thresholding.applyThreshold(tempImp, t + 1, count+1);
+			
+			labelMap.setRoi(r2);
+			int r2count = labelMap.getStatistics().pixelCount;
+			if (r2count == imagePixelCount)
+			{
+				r2count = 0;
+			}
+			
+			Roi r = null;
+			if (r1 != null && r2 != null && r2count > 0)
+			{
+				r = new ShapeRoi(r1).xor(new ShapeRoi(r2));
+			}
+			else if (r1 != null)
+			{
+				r = r1;
+			}
+			
+			//If there is something belonging to this ROI
+			if (r != null && r.getBounds().getWidth() > 0 && r.getBounds().getHeight() > 0)
+			{
+				labelMap.setRoi(r);
+				ImageStatistics roiStats = labelMap.getStatistics();
+				if (roiStats.pixelCount != imagePixelCount /*&& r.getFloatPolygon().npoints > 1*/)
+				{
+					mrm.addRoi(r);
+				}
+			}
+
+			if (r2 == null || r2count == 0)
+			{
+				break;
+			}
+
+			return mrm
+		}
 		
 		/*
 		
