@@ -8,16 +8,15 @@
 	<parent>
 		<groupId>org.scijava</groupId>
 		<artifactId>pom-scijava</artifactId>
-		<version>29.2.1</version>
+		<version>39.0.0</version>
 	</parent>
 
 	<groupId>de.mpicbg.scf</groupId>
 	<artifactId>SCF_ImgTools</artifactId>
-	<version>1.3.4</version>
+	<version>1.3.5</version>
 
 	<name>SCF_ImgTools</name>
-	
-	
+
 	<description>
 		Commonly used tools of the Scientific Computing Facility / BioImage Informatics Service at MPI CBG Dresden
 	</description>
@@ -51,6 +50,16 @@
 				<role>maintainer</role>
 			</roles>
 		</developer>
+		<developer>
+			<id>hkmoon</id>
+			<name>HongKee Moon</name>
+			<email>moon@mpi-cbg.de</email>
+			<organization>Scientific Computing Facility, MPI CBG Dresden</organization>
+			<url>https://imagej.net/User:Moon</url>
+			<roles>
+				<role>maintainer</role>
+			</roles>
+		</developer>
 	</developers>
 
 	<contributors>
@@ -75,32 +84,23 @@
 	</mailingLists>
 
 	<properties>
-		<package-name>de.mpibcbg.scf</package-name>
+		<scijava.jvm.version>1.8</scijava.jvm.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
 		<license.licenseName>bsd_3</license.licenseName>
 		<license.copyrightOwners>Max Planck Institute of Molecular Cell Biology and Genetics, Dresden</license.copyrightOwners>
-		<scijava.app.directory>/Users/walker/software/Fiji_dev.app</scijava.app.directory>
 	</properties>
 
-
 	<scm>
-		<connection>scm:git:git.mpi-cbg.de:bioimage-informatics/imgtools</connection>
-		<developerConnection>scm:git:git@git.mpi-cbg.de:bioimage-informatics/imgtools</developerConnection>
-		<tag>HEAD</tag>
-		<url>https://git.mpi-cbg.de:bioimage-informatics/imgtools</url>
+		<url>none</url>
 	</scm>
 	<issueManagement>
-		<system>Gitlab Issues</system>
-		<url>https://git.mpi-cbg.de:bioimage-informatics/imgtools/issues</url>
+		<system>None</system>
 	</issueManagement>
 	<ciManagement>
 		<system>None</system>
 	</ciManagement>
-
-
-
-
-
-
 
 	<dependencies>
 		<dependency>
@@ -142,35 +142,14 @@
 		<dependency>
 			<groupId>net.imglib2</groupId>
 			<artifactId>imglib2-ij</artifactId>
-			<version>2.0.0-beta-46</version>
 		</dependency>
-
 	</dependencies>
-
-
-
 
 	<repositories>
 		<!-- NB: for project parent -->
 		<repository>
-			<id>imagej.public</id>
-			<url>http://maven.imagej.net/content/groups/public</url>
-		</repository>
-		<repository>
-			<id>hslh</id>
-			<url>http://dl.bintray.com/haesleinhuepf/snapshots</url>
+			<id>scijava.public</id>
+			<url>https://maven.scijava.org/content/groups/public</url>
 		</repository>
 	</repositories>
-
-	<distributionManagement>
-
-		<repository>
-			<id>bintray-haesleinhuepf-snapshots</id>
-			<name>bintray-snapshots</name>
-			<url>https://api.bintray.com/maven/haesleinhuepf/snapshots/clearcontrol-lightsheet/;publish=1</url>
-		</repository>
-
-	</distributionManagement>
-	
-	
 </project>

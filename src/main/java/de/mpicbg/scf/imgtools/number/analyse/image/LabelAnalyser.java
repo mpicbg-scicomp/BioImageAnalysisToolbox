@@ -721,7 +721,7 @@ public class LabelAnalyser<I extends RealType<I>, F extends RealType<F>> {
         final Img<BitType> copy = ArrayImgs.bits(dims);
 
         RandomAccess<BitType> imageRA = copy.randomAccess();
-        LabelRegionCursor regionCursor = region.cursor();
+        LabelRegionCursor regionCursor = (LabelRegionCursor) region.inside().cursor();
         int count = 0;
         while (regionCursor.hasNext()) {
             regionCursor.next();
@@ -758,7 +758,7 @@ public class LabelAnalyser<I extends RealType<I>, F extends RealType<F>> {
         final Img<BitType> copy = ArrayImgs.bits(dims);
 
         RandomAccess<BitType> imageRA = copy.randomAccess();
-        Cursor<Void> regionCursor = Regions.iterable(region).cursor();
+        Cursor<Void> regionCursor = Regions.iterable(region).inside().cursor();
         int count = 0;
         while (regionCursor.hasNext()) {
             regionCursor.next();

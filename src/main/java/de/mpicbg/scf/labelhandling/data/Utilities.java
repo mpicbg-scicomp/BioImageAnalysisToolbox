@@ -4,10 +4,6 @@ import de.mpicbg.scf.imgtools.ui.DebugHelper;
 import de.mpicbg.scf.volumemanager.core.RoiUtilities;
 import ij.ImagePlus;
 import ij.measure.Calibration;
-import net.imagej.mesh.Mesh;
-import net.imagej.mesh.Triangle;
-import net.imagej.mesh.naive.NaiveDoubleMesh;
-import net.imagej.ops.geom.geom3d.mesh.*;
 import net.imglib2.*;
 import net.imglib2.RandomAccess;
 import net.imglib2.img.Img;
@@ -196,7 +192,7 @@ public class Utilities {
         }
 
         Img<BitType> map = ArrayImgs.bits(dims);
-        Cursor<Void> cur = Regions.iterable(rai).cursor();
+        Cursor<Void> cur = Regions.iterable(rai).inside().cursor();
 
         RandomAccess<BitType> ra = map.randomAccess();
 

@@ -165,7 +165,7 @@ public class RoiUtilities {
     public static <B extends BooleanType<B>> Roi getRoiFromRAISlice(RandomAccessibleInterval<B> lr, Interval interval) {
         IterableRegion<B> iterable = Regions.iterable(lr);
 
-        net.imglib2.Cursor<Void> cursor = iterable.cursor();
+        net.imglib2.Cursor<Void> cursor = iterable.inside().cursor();
 
         Img<UnsignedByteType> img = ArrayImgs.unsignedBytes(new long[]{interval.max(0), interval.max(1)});
         RandomAccess<UnsignedByteType> ira = img.randomAccess();

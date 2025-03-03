@@ -136,7 +136,7 @@ public class LabelingUtilities {
 
 
     public static <B extends BooleanType<B>> int count(RandomAccessibleInterval<B> region) {
-        Cursor<Void> cur = Regions.iterable(region).cursor();
+        Cursor<Void> cur = Regions.iterable(region).inside().cursor();
         cur.reset();
         int count = 0;
         while (cur.hasNext()) {
@@ -154,7 +154,7 @@ public class LabelingUtilities {
         }
 
         Img<BitType> map = ArrayImgs.bits(dims);
-        Cursor<Void> cur = Regions.iterable(rai).cursor();
+        Cursor<Void> cur = Regions.iterable(rai).inside().cursor();
 
         RandomAccess<BitType> ra = map.randomAccess();
 

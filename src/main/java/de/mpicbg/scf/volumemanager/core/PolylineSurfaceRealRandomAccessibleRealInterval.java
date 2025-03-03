@@ -189,4 +189,9 @@ public class PolylineSurfaceRealRandomAccessibleRealInterval implements RealRand
     public int numDimensions() {
         return (polylineSurface.getEndSlice() == polylineSurface.getStartSlice() && polylineSurface.getStartSlice() == 1) ? 2 : 3;
     }
+
+    @Override
+    public BoolType getType() {
+        return null;
+    }
 }

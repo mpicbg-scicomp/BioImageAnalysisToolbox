@@ -1,11 +1,11 @@
 package ij.plugin.frame;
 
 /**
- * This class is a workaround to get public access to the Roi managers open(filename) method. 
+ * This class is a workaround to get public access to the Roi managers open(filename) method.
  * This was needed to allow VolumeManager and Label3DManager to load ZIP files.
- * 
+ *
  * Furthermore, this class implements a correct Singleton.
- * 
+ *
  * @author Robert Haase, Scientific Computing Facility, MPI CBG, rhaase@mpi-cbg.de
  * @version 1.0.1, 2015-08-26
  */
@@ -13,17 +13,17 @@ public class ModRoiManager extends RoiManager {
 
 
 
-	
+
 	private static ModRoiManager instance = null;
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 8262679514562244550L;
 
-	public void open(String path)
+	public boolean open(String path)
 	{
-		super.open(path);
+		return super.open(path);
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class ModRoiManager extends RoiManager {
 		}
 		return instance;
 	}
-	
+
 	public void close()
 	{
 		super.close();
@@ -50,5 +50,5 @@ public class ModRoiManager extends RoiManager {
 			instance = null;
 		}
 	}
-	
+
 }

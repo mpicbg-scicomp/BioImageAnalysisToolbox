@@ -94,7 +94,7 @@ public class BinaryOperatorUtilitiesTest {
     public void testIfCursorOnIntersectionWorks() {
         RandomAccessibleInterval<BitType> operand1 = LabelingUtilities.getBinary1DImage("0001110000");
         RandomAccessibleInterval<BitType> operand2 = LabelingUtilities.getBinary1DImage("0000111000");
-        Cursor<Void> cursor1 = Regions.iterable(operand1).cursor();
+        Cursor<Void> cursor1 = Regions.iterable(operand1).inside().cursor();
         cursor1.next();
         assertTrue(cursor1.getDoublePosition(0) == 3);
         cursor1.next();
@@ -104,7 +104,7 @@ public class BinaryOperatorUtilitiesTest {
         assertTrue(!cursor1.hasNext());
 
         RandomAccessibleInterval<BoolType> intersection = BinaryOperatorUtilities.intersection(operand1, operand2);
-        Cursor<Void> cursor = Regions.iterable(intersection).cursor();
+        Cursor<Void> cursor = Regions.iterable(intersection).inside().cursor();
         cursor.next();
         assertTrue(cursor.getDoublePosition(0) == 4);
         cursor.next();

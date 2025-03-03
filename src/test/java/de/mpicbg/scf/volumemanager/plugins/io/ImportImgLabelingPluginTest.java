@@ -202,7 +202,7 @@ public class ImportImgLabelingPluginTest {
         RandomAccessibleInterval<BoolType> binaryImage = labelRegions.getLabelRegion(1);
 
 
-        Cursor<Void> inefficientCursor = Regions.iterable(binaryImage).cursor();
+        Cursor<Void> inefficientCursor = Regions.iterable(binaryImage).inside().cursor();
 
         int inefficientCount = 0;
         while (inefficientCursor.hasNext()) {
@@ -217,7 +217,7 @@ public class ImportImgLabelingPluginTest {
 
         RandomAccessibleInterval<BoolType> croppedBinaryImage = Views.hyperSlice(binaryImage, 2, 1);
 
-        Cursor<Void> efficientCursor = Regions.iterable(croppedBinaryImage).cursor();
+        Cursor<Void> efficientCursor = Regions.iterable(croppedBinaryImage).inside().cursor();
 
         int efficientCount = 0;
         while (efficientCursor.hasNext()) {

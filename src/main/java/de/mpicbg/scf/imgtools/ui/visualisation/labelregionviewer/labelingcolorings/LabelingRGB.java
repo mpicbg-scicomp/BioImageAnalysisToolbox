@@ -123,7 +123,7 @@ public class LabelingRGB<B extends BooleanType<B>> implements RandomAccessibleIn
 
 
     public void draw(RandomAccessibleInterval<UnsignedByteType> rgbImg, RandomAccessibleInterval<B> rai, Color color) {
-        Cursor<Void> cur = Regions.iterable(rai).cursor();
+        Cursor<Void> cur = Regions.iterable(rai).inside().cursor();
 
         RandomAccess<UnsignedByteType> ra = rgbImg.randomAccess();
 
